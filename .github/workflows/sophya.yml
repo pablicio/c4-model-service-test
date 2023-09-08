@@ -17,7 +17,7 @@ jobs:
       uses: easingthemes/ssh-deploy@main
       env:
         SSH_PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
-        ARGS: " --dry-run -a -iv --files-from - --from0"
+        ARGS: "--atimes --times --crtimes"
         SOURCE: "./sophya-docs/"
         REMOTE_HOST: ${{secrets.REMOTE_HOST}}
         REMOTE_USER: ${{secrets.REMOTE_USER}}
