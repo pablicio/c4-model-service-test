@@ -4,7 +4,6 @@
 LAYOUT_TOP_DOWN()
 LAYOUT_WITH_LEGEND()
 
-
 title Teste Aqui
 
 Person(customer, Customer, "A customer")
