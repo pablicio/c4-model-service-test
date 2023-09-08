@@ -10,6 +10,9 @@ jobs:
     steps:
     - name: Checkout the files
       uses: actions/checkout@v3
+    - name: Create folder
+      run: |
+        mkdir -p /home/ubuntu/docs/c4-model-service-test/ 2>/dev/null
     - name: Copy files with SSH
       uses: easingthemes/ssh-deploy@main
       env:
