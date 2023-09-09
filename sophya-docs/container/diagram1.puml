@@ -19,9 +19,9 @@ LAYOUT_WITH_LEGEND()
 
 
 
-title Container diagram for Internet Banking System
+title Meu teste qualquer
 
-Person(customer, Customer, "A customer of the bank, with personal bank accounts")
+Person(customer, Customer, "Teste Mudando o texto do user")
 
 System_Boundary(c1, "Internet Banking") {
     Container(web_app, "Web Application", "Java, Spring MVC", "Delivers the static content and the Internet banking SPA", "java")
