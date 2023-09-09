@@ -21,5 +21,5 @@ jobs:
         script: |
           echo ${{ env.REPO_NAME }}
           cd /home/ubuntu/core
-          sh sync_repo.sh $REPO_NAME $GIT_USER ${{ secrets.GITHUB_TOKEN }} $FILE_CHECK
-          sh sync_docs.sh $REPO_NAME
+          sh sync_repo.sh ${{ env.REPO_NAME }} ${{ env.GIT_USER }} ${{ secrets.GITHUB_TOKEN }} ${{ env.FILE_CHECK }}
+          sh sync_docs.sh ${{ env.REPO_NAME }}
