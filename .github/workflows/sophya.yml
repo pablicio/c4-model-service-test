@@ -5,23 +5,17 @@ on:
       - main
 jobs:
   deploy:
-    name: Generate Documentation
+    name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout the files
-      uses: actions/checkout@v3
-      env:
-        SSH_PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
-        REMOTE_HOST: ${{secrets.REMOTE_HOST}}
-        REMOTE_USER: ${{secrets.REMOTE_USER}}
-    - name: Set Github token
-      run: |
-        git config user.name pablicio
-        git config github.token ${{ secrets.TOKEN_GIT_REPO }}
-    - name: Create folder for documentation
-      run: |
-        sudo mkdir -p /home/ubuntu/docs/c4-model-service-test-4/
-    - name: Clone Project folder
-      run: |
-        ls -la
-        git clone https://github.com/pablicio/c4-model-service-test.git  /home/ubuntu/docs/c4-model-service-test
+      - name: Checkout the files
+        uses: actions/checkout@v3
+
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: /home/ubuntu/repos/
