@@ -17,6 +17,7 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         username:  ${{ secrets.REMOTE_USER }}
         script: |
+          echo $FILE
           if [[ -f $FILE ]]; then
             echo "$FILE exists!"
             git config user.name pablicio
