@@ -17,8 +17,6 @@
 ' LAYOUT_AS_SKETCH()
 LAYOUT_WITH_LEGEND()
 
-
-
 title Meu teste qualquer
 
 Person(customer, Customer, "Teste Mudando o texto do user")
