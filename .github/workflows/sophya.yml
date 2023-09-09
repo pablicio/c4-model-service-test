@@ -5,16 +5,16 @@ on:
       - main
 jobs:
   deploy:
-    name: Generate Documentation
+    name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
     steps:
-    - name: Config Enviroments
+    - name: pass environment
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.REMOTE_HOST }}
         key: ${{ secrets.EC2_SSH_KEY }}
         username:  ${{ secrets.REMOTE_USER }}
-    - name: Config Enviroments
-      run: |
-        ls -la
-        echo "Aquiii"
+        script: |
+          ls -la
+          echo "I am $FOO"
+          echo "I am $BAR"
