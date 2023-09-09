@@ -7,13 +7,13 @@ jobs:
   deploy:
     name: Generate Documentation
     runs-on: ubuntu-latest
+    env: 
+      REPO_NAME: c4-model-service-test
+      GIT_USER: pablicio
+      FILE_CHECK: README.md
     steps:
     - name: Sync Documentation Folder
       uses: appleboy/ssh-action@master
-      env: 
-        REPO_NAME: c4-model-service-test
-        GIT_USER: pablicio
-        FILE_CHECK: README.md
       with:
         host: ${{ secrets.REMOTE_HOST }}
         key: ${{ secrets.EC2_SSH_KEY }}
