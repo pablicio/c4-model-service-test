@@ -7,15 +7,27 @@ jobs:
   deploy:
     name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout the files
-        uses: actions/checkout@v3
+    - name: pass environment
+      uses: appleboy/ssh-action@master
+      env:
+        FOO: "BAR"
+        BAR: "FOO"
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        username:  ${{ secrets.REMOTE_USER }}
+        envs: FOO,BAR
+        script: |
+          echo "I am $FOO"
+          echo "I am $BAR"
+      # - name: Checkout the files
+      #   uses: actions/checkout@v3
 
-      - name: Deploy to Server 1
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: /home/ubuntu/repos/
+      # - name: Deploy to Server 1
+      #   uses: easingthemes/ssh-deploy@main
+      #   env:
+      #     SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+      #     REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+      #     REMOTE_USER: ${{ secrets.REMOTE_USER }}
+      #     TARGET: /home/ubuntu/repos/
