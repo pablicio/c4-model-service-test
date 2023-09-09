@@ -19,5 +19,6 @@ jobs:
           git config github.token ${{ secrets.GITHUB_TOKEN }}
           git clone https://github.com/pablicio/c4-model-service-test.git /home/ubuntu/repos/c4-model-service-test 2>/dev/null
           cd /home/ubuntu/repos/c4-model-service-test
+          pwd
           git fetch 2>/dev/null
           git diff --name-only main origin/main 2>/dev/null | egrep '\.(puml)$' >> /home/ubuntu/docs/diff.json
