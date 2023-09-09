@@ -26,5 +26,10 @@ jobs:
             git clone https://github.com/pablicio/c4-model-service-test.git /home/ubuntu/repos/c4-model-service-test 2>/dev/null
           fi
     - name: Sync doc folder
-      run: |
-        rsync -rltgoDzvO --delete /home/ubuntu/repos/c4-model-service-test/ /home/ubuntu/docs/c4-model-service-test/
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        username:  ${{ secrets.REMOTE_USER }}
+        script: |
+          rsync -rltgoDzvO --delete /home/ubuntu/repos/c4-model-service-test/sophya-docs /home/ubuntu/docs/c4-model-service-test/
