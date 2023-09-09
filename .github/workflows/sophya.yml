@@ -17,6 +17,5 @@ jobs:
         script: |
           git config user.name pablicio
           git config github.token ${{ secrets.GITHUB_TOKEN }}
-          git clone https://github.com/pablicio/c4-model-service-test.git /home/ubuntu/repos/c4-model-service-test 2>/dev/null
           cd /home/ubuntu/repos/c4-model-service-test
           ls -la
