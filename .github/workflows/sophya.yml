@@ -20,9 +20,8 @@ jobs:
         git config github.token ${{ secrets.TOKEN_GIT_REPO }}
     - name: Create folder for documentation
       run: |
-        sudo mkdir -p /home/ubuntu/docs/c4-model-service-test/
+        sudo mkdir -p /home/ubuntu/docs/c4-model-service-test-4/
     - name: Clone Project folder
       run: |
         ls -la
         git clone https://github.com/pablicio/c4-model-service-test.git
-      working-directory: /home/ubuntu/repos
