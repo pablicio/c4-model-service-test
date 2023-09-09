@@ -22,4 +22,4 @@ jobs:
           cd /home/ubuntu/core
           sh sync_repo.sh ${{ env.REPO_NAME }} ${{ env.GIT_USER }} ${{ secrets.GITHUB_TOKEN }} ${{ env.FILE_CHECK }}
           sh sync_docs.sh ${{ env.REPO_NAME }}
-          sh c4_generate.sh
+          sh c4_generate.sh ${{ env.REPO_NAME }}
