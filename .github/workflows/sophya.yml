@@ -19,7 +19,7 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         username:  ${{ secrets.REMOTE_USER }}
         script: |
-          echo $REPO_NAME $GIT_USER
+          echo ${{ env.REPO_NAME }}
           cd /home/ubuntu/core
           sh sync_repo.sh $REPO_NAME $GIT_USER ${{ secrets.GITHUB_TOKEN }} $FILE_CHECK
           sh sync_docs.sh $REPO_NAME
