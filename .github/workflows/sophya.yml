@@ -19,6 +19,7 @@ jobs:
         username:  ${{ secrets.REMOTE_USER }}
         envs: FOO,BAR
         script: |
+          ls -la
           echo "I am $FOO"
           echo "I am $BAR"
       # - name: Checkout the files
