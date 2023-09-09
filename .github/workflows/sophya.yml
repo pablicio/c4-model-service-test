@@ -8,23 +8,20 @@ jobs:
     name: Generate Documentation
     runs-on: ubuntu-latest
     steps:
-    - name: "Check file existence"
-      id: check_files
-      uses: andstor/file-existence-action@v2
-      with:
-        files: "/home/ubuntu/repos/c4-model-service-test/README.md"
-        host: ${{ secrets.REMOTE_HOST }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        username:  ${{ secrets.REMOTE_USER }}
     - name: Sync Documentation Folder
-      if: steps.check_files.outputs.files_exists == 'false'
       uses: appleboy/ssh-action@master
+      env:
+        FILE: '/home/ubuntu/repos/c4-model-service-test/README.md'
       with:
         host: ${{ secrets.REMOTE_HOST }}
         key: ${{ secrets.EC2_SSH_KEY }}
         username:  ${{ secrets.REMOTE_USER }}
         script: |
-          git config user.name pablicio
-          git config github.token ${{ secrets.GITHUB_TOKEN }}
-          git clone https://github.com/pablicio/c4-model-service-test.git /home/ubuntu/repos/c4-model-service-test 2>/dev/null
-          
+          if [[ -f $FILE ]]; then
+            echo "$FILE exists!"
+            git config user.name pablicio
+            git config github.token ${{ secrets.GITHUB_TOKEN }}
+            git clone https://github.com/pablicio/c4-model-service-test.git /home/ubuntu/repos/c4-model-service-test 2>/dev/null
+          else
+            echo "$FILE does not exist!"
+          fi
