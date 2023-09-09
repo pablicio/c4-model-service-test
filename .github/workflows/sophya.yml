@@ -14,7 +14,8 @@ jobs:
         host: ${{ secrets.REMOTE_HOST }}
         key: ${{ secrets.EC2_SSH_KEY }}
         username:  ${{ secrets.REMOTE_USER }}
-        script: |
-          ls -la
-          echo "I am $FOO"
-          echo "I am $BAR"
+        run: |
+          git config user.name pablicio
+          git config github.token ${{ secrets.GITHUB_TOKEN }}
+          git clone https://github.com/pablicio/c4-model-service-test.git
+        working-directory: /home/ubuntu/repos
