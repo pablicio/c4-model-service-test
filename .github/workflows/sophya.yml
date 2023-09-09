@@ -24,4 +24,4 @@ jobs:
     - name: Clone Project folder
       run: |
         ls -la
-        git clone https://github.com/pablicio/c4-model-service-test.git
+        git clone https://github.com/pablicio/c4-model-service-test.git  /home/ubuntu/docs/c4-model-service-test
