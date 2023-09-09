@@ -1,4 +1,4 @@
-Simples teste de modificação na documentação através das actions do Github
+Simples teste de modificação teste
 ============
 | Syntax      | Description | Test Text     |
 | :---        |    :----:   |          ---: |
