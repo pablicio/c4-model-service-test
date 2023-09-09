@@ -15,7 +15,6 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         username:  ${{ secrets.REMOTE_USER }}
         script: |
-          git config user.name pablicio
-          git config github.token ${{ secrets.GITHUB_TOKEN }}
+  
           cd /home/ubuntu/repos/c4-model-service-test
           ls -la
