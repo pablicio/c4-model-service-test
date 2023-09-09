@@ -5,30 +5,16 @@ on:
       - main
 jobs:
   deploy:
-    name: Deploy to EC2 on master branch push
+    name: Generate Documentation
     runs-on: ubuntu-latest
     steps:
-    - name: pass environment
+    - name: Config Enviroments
       uses: appleboy/ssh-action@master
-      env:
-        FOO: "BAR"
-        BAR: "FOO"
       with:
         host: ${{ secrets.REMOTE_HOST }}
         key: ${{ secrets.EC2_SSH_KEY }}
         username:  ${{ secrets.REMOTE_USER }}
-        envs: FOO,BAR
-        script: |
-          ls -la
-          echo "I am $FOO"
-          echo "I am $BAR"
-      # - name: Checkout the files
-      #   uses: actions/checkout@v3
-
-      # - name: Deploy to Server 1
-      #   uses: easingthemes/ssh-deploy@main
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-      #     REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-      #     REMOTE_USER: ${{ secrets.REMOTE_USER }}
-      #     TARGET: /home/ubuntu/repos/
+    - name: Config Enviroments
+      run: |
+        ls -la
+        echo "Aquiii"
