@@ -34,4 +34,4 @@ jobs:
         script: |
           cd /home/ubuntu/repos/c4-model-service-test
           git pull
-          rsync -rltgoDzvO --delete /home/ubuntu/repos/c4-model-service-test/sophya-docs /home/ubuntu/docs/c4-model-service-test/
+          rsync -rltgoDzvO --delete /home/ubuntu/repos/c4-model-service-test/sophya-docs/ /home/ubuntu/docs/c4-model-service-test/
