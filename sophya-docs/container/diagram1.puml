@@ -22,7 +22,6 @@ LAYOUT_WITH_LEGEND()
 title Meu teste qualquer
 
 Person(customer, Customer, "Teste Mudando o texto do user")
-
 System_Boundary(c1, "Internet Banking") {
     Container(web_app, "Web Application", "Java, Spring MVC", "Delivers the static content and the Internet banking SPA", "java")
     Container(spa, "Single-Page App", "JavaScript, Angular", "Provides all the Internet banking functionality to customers via their web browser", "angular")
