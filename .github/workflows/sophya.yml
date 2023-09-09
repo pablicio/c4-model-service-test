@@ -13,8 +13,11 @@ jobs:
       uses: andstor/file-existence-action@v2
       with:
         files: "/home/ubuntu/repos/c4-model-service-test/README.md"
+        host: ${{ secrets.REMOTE_HOST }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        username:  ${{ secrets.REMOTE_USER }}
     - name: Sync Documentation Folder
-      if: steps.check_files.outputs.files_exists == 'true'
+      if: steps.check_files.outputs.files_exists == 'false'
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.REMOTE_HOST }}
