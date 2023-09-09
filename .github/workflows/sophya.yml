@@ -17,7 +17,8 @@ jobs:
         script: |
           if [[ -f /home/ubuntu/repos/c4-model-service-test/README.md ]]; then
             cd /home/ubuntu/repos/c4-model-service-test
-            git diff --name-only main origin/main 2>/dev/null | egrep '\.(puml)$' >> /home/ubuntu/docs/map_folder.json
+            ls
+            git diff --name-only main origin/main 2>/dev/null | egrep '\.(puml)$' >> /home/ubuntu/docs/diff.json
           else
             git config user.name pablicio
             git config github.token ${{ secrets.GITHUB_TOKEN }}
